@@ -15,8 +15,14 @@ namespace SampleWebAPI.Controllers
 {
     public class SavingsTypesController : ApiController
     {
-        private SavingsDBContext db = new SavingsDBContext();
+        private SavingsDBContext db = null;
 
+        public SavingsTypesController()
+        { }
+        public SavingsTypesController(SavingsDBContext dbcontext)
+        {
+            db = dbcontext;
+        }
         // GET: api/SavingsTypes
         public IQueryable<SavingsType> GetSavingsTypes()
         {

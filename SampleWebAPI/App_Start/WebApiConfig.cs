@@ -1,13 +1,19 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Integration.WebApi;
+using SampleWebAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
+using System.Reflection;
 using System.Web.Http;
 
 namespace SampleWebAPI
 {
     public static class WebApiConfig
     {
+        public static object AutofacDependencyBuilder { get; private set; }
+
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
@@ -22,6 +28,8 @@ namespace SampleWebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+
         }
     }
 }
