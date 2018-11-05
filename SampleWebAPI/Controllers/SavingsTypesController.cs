@@ -24,18 +24,21 @@ namespace SampleWebAPI.Controllers
             db = dbcontext;
         }
         // GET: api/SavingsTypes
+        [Authorize]
         public IQueryable<SavingsType> GetSavingsTypes()
         {
             return db.SavingsTypes;
         }
 
         // GET: api/SavingsTypes/5
+        [Authorize]
         [ResponseType(typeof(SavingsType))]
         public async Task<IHttpActionResult> GetSavingsType(int id)
         {
             SavingsType savingsType = await db.SavingsTypes.FindAsync(id);
             if (savingsType == null)
             {
+              
                 return NotFound();
             }
 

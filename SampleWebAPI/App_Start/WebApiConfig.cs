@@ -22,6 +22,7 @@ namespace SampleWebAPI
             config.MapHttpAttributeRoutes();
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());
+            config.Formatters.JsonFormatter.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -17,17 +17,21 @@ namespace SampleWebAPI.Models
     
         public SavingsDBContext() : base("name=SavingsDB")
         {
-            this.Configuration.LazyLoadingEnabled = true;    
+            this.Configuration.LazyLoadingEnabled = true;
+            this.Database.CreateIfNotExists();
             
         }
 
         public DbSet<SavingsType> SavingsTypes { get; set; }
         public DbSet<SavingsDetails> SavingsDetails { get; set; }
 
+        public DbSet<UserModel> UserModels { get; set; }
+
         //added to prevent ef to append s in entityobjects
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SavingsType>().ToTable("SavingsType");
+            modelBuilder.Entity<UserModel>().ToTable("Users");
         }
     }
 }
